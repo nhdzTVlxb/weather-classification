@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from tqdm import tqdm
 os.environ['CUDA_VISIBLE_DEVICES'] = '1'  
-# ===================== GPU 设置 =====================
+# GPU_choese
 import tensorflow as tf
 gpus = tf.config.list_physical_devices('GPU')
 if gpus:
@@ -18,7 +18,6 @@ if gpus:
     except RuntimeError as e:
         print(e)
 
-# ===================== 导入模块 =====================
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.layers import Dropout, Flatten, Dense, BatchNormalization, GlobalAveragePooling2D
@@ -30,7 +29,6 @@ from tensorflow.keras.regularizers import l2
 sys.path.append('/home/cyp/weather/Keras-MultiClass-Image-Classification-master/scripts')
 from model import load_backbone, list_available_models
 
-# ===================== 自定义进度条回调（只显示进度，不显示指标） =====================
 class ProgressBarCallback(Callback):
     """只显示训练进度的进度条"""
     def __init__(self, total_epochs, steps_per_epoch):
@@ -62,7 +60,7 @@ class ProgressBarCallback(Callback):
     def on_train_end(self, logs=None):
         self.epoch_bar.close()
 
-# ===================== 自定义详细指标回调（每个epoch结束后打印） =====================
+# 自定义详细指标回调（每个epoch结束后打印） 
 class VerboseMetricsCallback(Callback):
     """每个epoch结束后打印详细的训练和验证指标"""
     def __init__(self, validation_generator=None):
@@ -168,9 +166,9 @@ class F1ScoreCallback(Callback):
 # ===================== 配置参数 =====================
 class Config:
     # 数据集参数
-    img_width = 256
-    img_height = 256
-    batch_size = 16
+    img_width = 512
+    img_height = 512
+    batch_size = 16 #32
     num_classes = 5
     
     # 模型参数
