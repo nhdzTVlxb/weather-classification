@@ -21,7 +21,7 @@ from tqdm import tqdm
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 BACKBONE_NAME = "convnext_tiny"
-DEFAULT_OUTPUT_DIR = "/home/wdy/cyp/weather/convnext_tiny_ms_tta_v2"
+DEFAULT_OUTPUT_DIR = "/home/weather/convnext_tiny_ms_tta_v2"
 DEFAULT_BATCH_SIZE = 64
 DEFAULT_LR = 1e-4
 DEFAULT_BACKBONE_LR_MULT = 0.20
@@ -32,7 +32,7 @@ DEFAULT_EPOCHS = 100
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data-dir", default="/home/wdy/cyp/weather/datanew")
+    parser.add_argument("--data-dir", default="/home/weather/datanew")
     parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--image-size", type=int, default=384)
 
